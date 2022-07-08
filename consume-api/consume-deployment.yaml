@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: consume-site
+  namespace: default
+  labels:
+    app: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+        - name: consume-container
+          image: consume-api
+          imagePullPolicy: Never
+          envFrom:
+          - configMapRef:
+              name: consume-configmap                    
+          ports:
+            - containerPort: 3001

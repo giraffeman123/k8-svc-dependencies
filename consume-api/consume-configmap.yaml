@@ -1,0 +1,9 @@
+apiVersion: v1  
+kind: ConfigMap  
+metadata:  
+  name: consume-configmap
+  namespace: default
+data:  
+  TZ: America/Tijuana 
+  SERVICE_TEST: http://test-service:8080
+
